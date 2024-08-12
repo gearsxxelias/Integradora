@@ -1,0 +1,11 @@
+footer {
+   background-color: black;
+   height: fit-content;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+}
+.textfoot{
+   justify-items: left;
+   color: white;
+  }

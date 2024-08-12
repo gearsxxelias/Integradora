@@ -1,0 +1,18 @@
+<div class="formulario">
+  <form class="inisesion">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email" name="email" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">Nunca compartiremos tu email con nadie más.</div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="usuario.password" name="password">
+    </div>
+    <div class="botones-container">
+      <div class="boton1">
+        <button class="btn btn-primary" type="button" (click)="iniSesion()">Iniciar sesión</button>
+      </div>
+    </div>
+  </form>
+</div>
