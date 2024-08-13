@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GenemPrimaService {
 
-  private url = "https://localhost:5500/materiasPrimas/crear";
+  private url = "https://localhost:5500/materiasPrimas";
 
   constructor(private http: HttpClient) { }
 
@@ -25,13 +25,13 @@ export class GenemPrimaService {
       numeroLote,
       fechaCaducidad
     };
-    const token = localStorage.getItem('authToken');
+//    const token = localStorage.getItem('token');
 
     // Configurar los encabezados con el token de autorización
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+//    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     // Hacer la solicitud HTTP con los encabezados
-    this.http.post<any>(this.url, data, { headers })
+    this.http.post<any>(this.url, data)
       .subscribe(
         response => {
           console.log('Materia prima registrada con éxito:', response);
@@ -41,4 +41,5 @@ export class GenemPrimaService {
         }
       );
   }
+
 }

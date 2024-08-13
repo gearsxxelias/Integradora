@@ -15,22 +15,22 @@ export class InisesionService {
   login(usuario: object) {
     return this.http.post<any>(this.apiurl, usuario).pipe(
       tap(response => {
-        if (response.jwtoken) { // Asumiendo que el token se llama jwtoken en la respuesta
-          alert(response.msj); // Muestra el mensaje de la respuesta
-          localStorage.setItem('authToken', response.jwtoken); // Guarda el token en el localStorage
-          localStorage.setItem('usuario', response.email); // Guarda el usuario en el localStorage
-          this.router.navigate(['/catalogo']); // Redirige a /catalogo
+        if (response.jwtoken) { 
+          alert(response.msj); 
+          localStorage.setItem('authToken', response.jwtoken); 
+          localStorage.setItem('usuario', response.email); 
+//          this.router.navigate(['/create']);
         }
       })
     );
   }
 
   eslogueado(): boolean {
-    return localStorage.getItem('authToken') !== null;
+    return !! localStorage.getItem('token');
   }
 
   getToken() {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('token');
   }
 
   cerrarSesion() {
