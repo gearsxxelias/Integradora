@@ -9,6 +9,12 @@
     </tr>
   </thead>
   <tbody>
-    
+    <tr *ngFor="let materia of materia">
+      <td>{{ materia.materiaPrima }}</td>
+      <td>{{ materia.fechaRecepcion | date:'dd/MM/yyyy' }}</td>
+      <td>{{ materia.cantidadRecibida }}</td>
+      <td>{{ materia.numeroLote }}</td>
+      <td>{{ materia.fechaCaducidad | date:'dd/MM/yyyy' }}</td>
+    </tr>
   </tbody>
 </table>

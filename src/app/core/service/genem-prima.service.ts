@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +23,7 @@ export class GenemPrimaService {
       cantidadRecibida,
       numeroLote,
       fechaCaducidad
-    };
-//    const token = localStorage.getItem('token');
-
-    // Configurar los encabezados con el token de autorización
-//    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    // Hacer la solicitud HTTP con los encabezados
+    };  
     this.http.post<any>(this.url, data)
       .subscribe(
         response => {
@@ -42,4 +35,8 @@ export class GenemPrimaService {
       );
   }
 
+  consultatodaMateria(){
+    return this.http.get<any[]>(this.url);
+    
+  }
 }
