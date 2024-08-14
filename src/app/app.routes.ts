@@ -6,6 +6,8 @@ import { CreateComponent } from './create/create.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CargamentoComponent } from './cargamento/cargamento.component';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule aquí
+
 
 import { logueadoGuard } from './logueado.guard';
 
@@ -21,7 +23,7 @@ export const routes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes),FormsModule],
     exports: [RouterModule]
   })
 

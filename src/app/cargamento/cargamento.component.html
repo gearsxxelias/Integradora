@@ -6,15 +6,88 @@
       <th>Cantidad Recibida</th>
       <th>No.Lote</th>
       <th>Fecha Caducidad</th>
+      <!-- La columna de acciones se elimina del encabezado -->
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let materia of materia">
-      <td>{{ materia.materiaPrima }}</td>
-      <td>{{ materia.fechaRecepcion | date:'dd/MM/yyyy' }}</td>
-      <td>{{ materia.cantidadRecibida }}</td>
-      <td>{{ materia.numeroLote }}</td>
-      <td>{{ materia.fechaCaducidad | date:'dd/MM/yyyy' }}</td>
-    </tr>
+    <!-- Iteramos sobre cada materia y creamos dos filas por cada una: 
+         una para los datos y otra para los botones de acciones -->
+    <ng-container *ngFor="let materia of materia; let i = index">
+      <!-- Fila de datos -->
+      <tr>
+        <td>{{ materia.materiaPrima }}</td>
+        <td>{{ materia.fechaRecepcion | date:'dd/MM/yyyy' }}</td>
+        <td>{{ materia.cantidadRecibida }}</td>
+        <td>{{ materia.numeroLote }}</td>
+        <td>{{ materia.fechaCaducidad | date:'dd/MM/yyyy' }}</td>
+      </tr>
+      <!-- Fila de acciones -->
+      <tr>
+        <td colspan="5"> <!-- Usamos colspan para que esta fila ocupe todo el ancho de la tabla -->
+          <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" [attr.data-bs-target]="'#updateMaterialModal-' + i">Actualizar</button>
+          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteModal-' + i">Eliminar</button>
+        </td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
+
+
+<!-- Modal de Actualización -->
+<!-- Modal de Actualización -->
+<div *ngFor="let materia of materia; let i = index" class="modal fade" [id]="'updateMaterialModal-' + i" tabindex="-1" aria-labelledby="updateMaterialModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateMaterialModalLabel">Actualizar Materia Prima</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario de actualización -->
+        <div class="mb-3">
+          <label for="materiaPrima-{{i}}" class="form-label">Materia Prima:</label>
+          <input type="text" class="form-control" [(ngModel)]="materia.materiaPrima" id="materiaPrima-{{i}}">
+        </div>
+        <div class="mb-3">
+          <label for="fechaRecepcion-{{i}}" class="form-label">Fecha Recepción:</label>
+          <input type="date" class="form-control" [(ngModel)]="materia.fechaRecepcion" id="fechaRecepcion-{{i}}">
+        </div>
+        <div class="mb-3">
+          <label for="cantidadRecibida-{{i}}" class="form-label">Cantidad Recibida:</label>
+          <input type="number" class="form-control" [(ngModel)]="materia.cantidadRecibida" id="cantidadRecibida-{{i}}">
+        </div>
+        <div class="mb-3">
+          <label for="numeroLote-{{i}}" class="form-label">No.Lote:</label>
+          <input type="text" class="form-control" [(ngModel)]="materia.numeroLote" id="numeroLote-{{i}}">
+        </div>
+        <div class="mb-3">
+          <label for="fechaCaducidad-{{i}}" class="form-label">Fecha Caducidad:</label>
+          <input type="date" class="form-control" [(ngModel)]="materia.fechaCaducidad" id="fechaCaducidad-{{i}}">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="modificarMat()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Eliminación -->
+<div *ngFor="let materia of materia; let i = index" class="modal fade" [id]="'deleteModal-' + i" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar esta materia prima?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

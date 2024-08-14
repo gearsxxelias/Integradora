@@ -1,18 +1,30 @@
 import { Component } from '@angular/core';
 import { GenemPrimaService } from '../core/service/genem-prima.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule aquí
+
+
 
 @Component({
   selector: 'app-cargamento',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './cargamento.component.html',
   styleUrl: './cargamento.component.css'
 })
 export class CargamentoComponent{
   
   
-  materia: any[] = [];  
+  materia: any[] = [];
+
+  Materia = {
+    materiaPrima: "",
+    fechaRecepcion: "",
+    cantidadRecibida: "",
+    numeroLote: "",
+    fechaCaducidad: ""
+  };
+
 
 
   ngOnInit(){
@@ -28,7 +40,9 @@ export class CargamentoComponent{
       this.materia = data; 
     });
   }
+  modificarMat(){
 
 
+  }
 }
 

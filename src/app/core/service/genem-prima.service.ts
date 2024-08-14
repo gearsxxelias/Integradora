@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,4 +41,11 @@ export class GenemPrimaService {
     return this.http.get<any[]>(this.url);
     
   }
+
+  modificarMat(Materia:object){
+    return this.http.put<any>(this.url,Materia)
+    
+  }
+
+
 }
