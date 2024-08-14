@@ -12,3 +12,112 @@
     
   </tbody>
 </table>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#materialModal">
+  Ver Detalles
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="materialModal" tabindex="-1" aria-labelledby="materialModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="materialModalLabel">Detalles de Materia Prima</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="materialName" class="form-label">Materia Prima:</label>
+          <input type="text" class="form-control" id="materialName" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="receptionDate" class="form-label">Fecha Recepción:</label>
+          <input type="text" class="form-control" id="receptionDate" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="receivedQuantity" class="form-label">Cantidad Recibida:</label>
+          <input type="text" class="form-control" id="receivedQuantity" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="lotNumber" class="form-label">No.Lote:</label>
+          <input type="text" class="form-control" id="lotNumber" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="expirationDate" class="form-label">Fecha Caducidad:</label>
+          <input type="text" class="form-control" id="expirationDate" readonly>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateMaterialModal">
+  Actualizar Detalles
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="updateMaterialModal" tabindex="-1" aria-labelledby="updateMaterialModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateMaterialModalLabel">Actualizar Materia Prima</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="updateMaterialName" class="form-label">Materia Prima:</label>
+          <input type="text" class="form-control" id="updateMaterialName">
+        </div>
+        <div class="mb-3">
+          <label for="updateReceptionDate" class="form-label">Fecha Recepción:</label>
+          <input type="date" class="form-control" id="updateReceptionDate">
+        </div>
+        <div class="mb-3">
+          <label for="updateReceivedQuantity" class="form-label">Cantidad Recibida:</label>
+          <input type="number" class="form-control" id="updateReceivedQuantity">
+        </div>
+        <div class="mb-3">
+          <label for="updateLotNumber" class="form-label">No.Lote:</label>
+          <input type="text" class="form-control" id="updateLotNumber">
+        </div>
+        <div class="mb-3">
+          <label for="updateExpirationDate" class="form-label">Fecha Caducidad:</label>
+          <input type="date" class="form-control" id="updateExpirationDate">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="saveChanges">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+  <i class="fas fa-trash-alt"></i> Eliminar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar esta materia prima?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

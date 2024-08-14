@@ -6,9 +6,21 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" routerLink="/dashboard" >inicio sesion</a>
-              <a class="nav-link active" routerLink="/create" >agregar cargamento</a>
-              <a class="nav-link active" routerLink="/cargamento" >Cargamentos agregados</a>
+             <!--  <a class="nav-link active" routerLink="/dashboard" >inicio sesion</a> -->
+              <ul class="navbar-nav">
+                @if(iniciosesionService.eslogueado()){
+                  <a class="nav-link active" routerLink="/cargamento" >Cargamentos agregados</a>
+                  <a class="nav-link active" routerLink="/create" >Agregar Cargamento</a>
+        
+                  <li class="nav-item">
+                    <a class="nav-link" href="" (click)="iniciosesionService.cerrarSesion()">Cerrar Sesion</a>
+                  </li>
+                }@else{
+                  <li class="nav-item">
+                   <!--  <a class="nav-link active" routerLink="/dashboard" >Inicio sesion</a> -->
+                  </li>
+                }
+              </ul>
               </div>
           </div>
         </div>   

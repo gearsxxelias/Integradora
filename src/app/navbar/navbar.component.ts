@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { InisesionService } from '../core/service/inisesion.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,5 +11,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  constructor(public iniciosesionService: InisesionService){}
 }
