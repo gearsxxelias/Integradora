@@ -29,13 +29,13 @@ export class DashboardComponent {
         this.router.navigate(['/create']);
       },
       err => {
-        console.log(err);
+        console.log('Error recibido:', err); // Añade este log
         if (err.error && err.error.errores && err.error.errores.length > 0) {
           alert(err.error.errores[0].msg);
         } else if (typeof err.error === "string") {
           alert(err.error || "inicio de sesion fallido.");
         } else {
-          alert("inicio de sesion fallido");
+          alert("fallo en la respuesta");
         }
       }
     );

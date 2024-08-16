@@ -42,7 +42,19 @@ export class CargamentoComponent{
   }
   modificarMat(){
 
+  }
 
+  eliminarMAT(materiaPrima: string) {
+    if (confirm(`¿Desea eliminar la materia prima ${materiaPrima}?`)) {
+      this.GenemPrimaService.eliminarMat(materiaPrima).subscribe(
+        () => {
+          alert("Materia Prima eliminada");
+        },
+        () => {
+          alert("Error al eliminar");
+        }
+      );
+    }
   }
 }
 
