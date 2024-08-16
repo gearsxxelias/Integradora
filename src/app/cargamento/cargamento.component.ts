@@ -40,21 +40,24 @@ export class CargamentoComponent{
       this.materia = data; 
     });
   }
-  modificarMat(){
 
+
+  modificarMat() {
+    alert("Materia Prima actualizada correctamente");
   }
 
+
   eliminarMAT(materiaPrima: string) {
-    if (confirm(`¿Desea eliminar la materia prima ${materiaPrima}?`)) {
+    if (confirm("¿Desea eliminar la materia prima" + materiaPrima +"?")) {
       this.GenemPrimaService.eliminarMat(materiaPrima).subscribe(
-        () => {
+        ()=> {
           alert("Materia Prima eliminada");
+          location.reload(); // Opcional: solo si quieres recargar la página
         },
-        () => {
+        ()=> {
           alert("Error al eliminar");
         }
       );
     }
   }
 }
-

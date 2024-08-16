@@ -24,7 +24,7 @@ export class CreateComponent {
 
   constructor(private GenemPrimaService: GenemPrimaService, private router: Router) {}
 
-  GuardarMateria() {
+  async GuardarMateria() {
     console.log('Datos enviados:', {
       materiaPrima: this.Materia.materiaPrima,
       fechaRecepcion: this.Materia.fechaRecepcion,
@@ -33,12 +33,29 @@ export class CreateComponent {
       fechaCaducidad: this.Materia.fechaCaducidad
     });
   
-    this.GenemPrimaService.GuardarMateria(
-      this.Materia.materiaPrima,
-      new Date(this.Materia.fechaRecepcion), // Convertir a string ISO
-      Number(this.Materia.cantidadRecibida), // Convertir a número
-      Number(this.Materia.numeroLote), // Convertir a número
-      new Date(this.Materia.fechaCaducidad) // Convertir a string ISO
-    );
+    try {
+      await this.GenemPrimaService.GuardarMateria(
+        this.Materia.materiaPrima,
+        new Date(this.Materia.fechaRecepcion), 
+        Number(this.Materia.cantidadRecibida), 
+        Number(this.Materia.numeroLote), 
+        new Date(this.Materia.fechaCaducidad)
+      );
+      alert('Materia prima registrada con éxito.');
+      this.limpiarFormulario(); // Limpiar los campos del formulario
+    } catch (error) {
+      console.error('Error al registrar la materia prima:', error);
+      alert('Error al registrar la materia prima.');
+    }
+  }
+
+  limpiarFormulario() {
+    this.Materia = {
+      materiaPrima: "",
+      fechaRecepcion: "",
+      cantidadRecibida: "",
+      numeroLote: "",
+      fechaCaducidad: ""
+    };
   }
 }
